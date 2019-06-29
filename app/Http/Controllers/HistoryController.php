@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 class HistoryController extends Controller
 {
     /**
@@ -16,7 +18,7 @@ class HistoryController extends Controller
 
     //
 
-    public function getHistory()
+    public function getHistories()
     {
         $attribute = array(
             "object_domain"     => "contact",
@@ -31,18 +33,33 @@ class HistoryController extends Controller
             "created_at"        => "2018-01-25T07:50:14+00:00"   
         );
 
-        $data_array = array(
-            'data'  => array(
-                'type'      => '',
-                'id'        => '',
-                'attribut'  => $attribute    
-            ),
-            'links' => array(
-                'selft' => ''
-            )
+        return response->json([
+            'data'  => [
+                'attribute' => $attribute
+            ]   
+        ]);
+    }
+
+    public function getDetailHistories($historyId)
+    {
+        $attribute = array(
+            "object_domain"     => "contact",
+            "object_id"         => "1",
+            "description"       =>  "Need to verify this guy house.",
+            "is_completed"      => false,
+            "due"               => null,
+            "urgency"           => 0,
+            "completed_at"      => null,
+            "last_update_by"    => null,
+            "update_at"         => null,
+            "created_at"        => "2018-01-25T07:50:14+00:00"   
         );
-        $data = json_encode($data_array);
-        return $data;
+
+        return response->json([
+            'data'  => [
+                'attribute' => $attribute
+            ]   
+        ]);
     }
 
 }
