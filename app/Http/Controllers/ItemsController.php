@@ -47,30 +47,19 @@ class ItemsController extends Controller
         ]);
     }
 
-    public function getAllItem()
+    public function postCompleteItem(Request $request)
     {
-        $attribute = array(
-            "object_domain"     => "contact",
-            "object_id"         => "1",
-            "description"       =>  "Need to verify this guy house.",
-            "is_completed"      => false,
-            "due"               => null,
-            "urgency"           => 0,
-            "completed_at"      => null,
-            "last_update_by"    => null,
-            "update_at"         => null,
-            "created_at"        => "2018-01-25T07:50:14+00:00"   
-        );
-
+        $data_array = array();
         return response()->json([
-            'data'  => array(
-                'type'      => '',
-                'id'        => '',
-                'attribut'  => $attribute    
-            ),
-            'links' => array(
-                'self' => ''
-            )
+            'data'  => $data_array
+        ]);
+    }
+
+    public function postInCompleteItem(Request $request)
+    {
+        $data_array = array();
+        return response()->json([
+            'data'  => $data_array
         ]);
     }
 

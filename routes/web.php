@@ -37,7 +37,7 @@ $router->delete('/checklists/templates/{id}', 'TemplateController@deleteTemplate
 $router->post('/checklists/templates/{id}/assigns', 'TemplateController@postAssignsTemplate');
 
 
-//for checklists template
+//for checklists
 //for checklists get, if ID = 0 then all
 $router->get('/checklists/{checklistId}', 'ChecklistsController@getDetailChecklist');
 //for checklists update, if ID = 0 then all
@@ -50,9 +50,29 @@ $router->delete('/checklists/{checklistId}', 'ChecklistsController@deleteCheckli
 $router->get('/checklists', 'ChecklistsController@getALLChecklist');
 
 
-
+//for Items
+//for items all, if ID = 0 then all
+$router->post('/checklists/complete', 'ItemsController@postCompleteItem');
+//for items all, if ID = 0 then all
+$router->post('/checklists/incomplete', 'ItemsController@postInCompleteItem');
 //for checklists get, if ID = 0 then all
-$router->get('/checklists/items/summary', 'ItemsController@getAllItem');
+$router->get('/checklists/{checklistId}/items', 'ItemsController@getListItem');
+//for checklists get, if ID = 0 then all
+$router->post('/checklists/{checklistId}/items', 'ItemsController@postItem');
 //for checklists get, if ID = 0 then all
 $router->get('/checklists/{checklistId}/items/{itemId}', 'ItemsController@getDetailItem');
+//for checklists get, if ID = 0 then all
+$router->patch('/checklists/{checklistId}/items/{itemId}', 'ItemsController@patchItem');
+//for checklists get, if ID = 0 then all
+$router->delete('/checklists/{checklistId}/items/{itemId}', 'ItemsController@deleteItem');
+//for checklists get, if ID = 0 then all
+$router->post('/checklists/{checklistId}/items/_bulk', 'ItemsController@postBulkItem');
+//for checklists get, if ID = 0 then all
+$router->get('/checklists/items/summary', 'ItemsController@getAllItem');
+
+
+//for checklists get, if ID = 0 then all
+$router->get('/checklists/histories', 'HistoryController@getHistories');
+//for checklists get, if ID = 0 then all
+$router->get('/checklists/histories/{historyId}', 'HistoryController@getDetailHistories');
 
