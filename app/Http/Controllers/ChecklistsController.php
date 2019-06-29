@@ -20,6 +20,20 @@ class ChecklistsController extends Controller
     }
 
     //
+    public function getAllChecklist()
+    {
+        $checklist = Checklists::get();
+        if ($checklist){
+            return response()->json();
+            
+        } else {
+            return response()->json([
+                'status'    => '404',
+                'error'     => 'Not Found'
+                ],404);
+        }
+    }
+
 
     public function getDetailChecklist($checklistId)
     {
@@ -98,8 +112,42 @@ class ChecklistsController extends Controller
                     ],404);
                 }        
     }
-    
 
+    public function postCheckList(Request $request)
+    {
+        $checklist = Checklists::create([
+            'description'      => '',
+        ]);
+
+        $attribute = Attributte::create([
+            'checklist_id'      => $checklist->id,
+            'object_domain'     => $request->data['attributes']['object_domain'],
+            'object_id'         => $request->data['attributes']['object_id'],
+            'due'               => $request->data['attributes']['due'],
+            'urgency'           => $request->data['attributes']['urgency'],
+            'description'       => $request->data['attributes']['description'],
+            'items'             => $request->data['attributes']['items'],
+            'task_id'           => $request->data['attributes']['task_id']            
+        ]);
+        
+        
+        return response()->json([
+            'data'  => [
+                'type'  => 'checklists',
+                'id'    => $checklist->id,
+                'attributes'    => $attribute,
+                'links' => [
+                    'self'  => ''
+                ]    
+            ]
+        ]);
+    }    
+    
+    public function deleteCheckList($checklistId)
+    {
+        $checklist      = Checklists::where('id',$checklistId)->delete();        
+        return response()->json();
+    }
     //
 
 }

@@ -40,8 +40,15 @@ $router->post('/checklists/templates/{id}/assigns', 'TemplateController@postAssi
 //for checklists template
 //for checklists get, if ID = 0 then all
 $router->get('/checklists/{checklistId}', 'ChecklistsController@getDetailChecklist');
-//for checklists get, if ID = 0 then all
+//for checklists update, if ID = 0 then all
 $router->patch('/checklists/{checklistId}', 'ChecklistsController@patchChecklist');
+//for checklists insert, if ID = 0 then all
+$router->post('/checklists', 'ChecklistsController@postChecklist');
+//for checklists delete, if ID = 0 then all
+$router->delete('/checklists/{checklistId}', 'ChecklistsController@deleteChecklist');
+//for checklists insert, if ID = 0 then all
+$router->get('/checklists', 'ChecklistsController@getALLChecklist');
+
 
 
 //for checklists get, if ID = 0 then all
