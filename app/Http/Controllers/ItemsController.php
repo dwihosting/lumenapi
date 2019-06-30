@@ -171,7 +171,6 @@ class ItemsController extends Controller
             'urgency'  => $urgency,
             'asignee_id'  => $assignee_id
         ]);
-
         
         $items = Items::where('checklist_id', $checklistId)->where('id', $itemid)->first();
         $data_array = array(
@@ -236,7 +235,8 @@ class ItemsController extends Controller
     // NOT FINISH YET
     public function getAllItem(Request $request)
     {
-        $items = Items::where('object_domain', $request->object_domain)->first();
+        // JOIN WITH chechlist find name object_domain
+        //$items = Items::where('object_domain', $request->object_domain)->first();
 
         $data_array = [
             'today'         => 0,

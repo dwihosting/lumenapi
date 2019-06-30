@@ -17,10 +17,15 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('template_id');
             $table->integer('checklist_id');
+            $table->integer('assignee_id');            
             $table->string('description');
             $table->string('urgency');
+            $table->integer('is_complete');            
+            $table->string('due');
             $table->string('due_interval');
             $table->string('due_unit');
+            $table->string('created_by');
+            $table->timestamps('completed_at');
             $table->timestamps();
         });
     }
