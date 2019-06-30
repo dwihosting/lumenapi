@@ -16,6 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('template_id');
+            $table->integer('checklist_id');
             $table->string('description');
             $table->string('urgency');
             $table->string('due_interval');
